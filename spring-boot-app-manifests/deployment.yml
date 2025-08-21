@@ -13,6 +13,10 @@ spec:
     metadata:
       labels:
         app: spring-boot-app
+      annotations:                    # ← Add this section
+        prometheus.io/scrape: "true"   # Prometheus will scrape this pod
+        prometheus.io/port: "8080"     # Port your app exposes metrics
+        prometheus.io/path: "/actuator/prometheus"  # Metrics endpoint
     spec:
       containers:
       - name: spring-boot-app
